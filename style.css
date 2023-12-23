@@ -1,0 +1,28 @@
+body{
+    margin: 0;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+input{
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button{
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background-color: #5f9341;
+    color: #fff;
+}
+button:hover{
+    background-color: #38621e;
+}
