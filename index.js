@@ -1,14 +1,27 @@
-let myLeads = ["www.awesomelead.com", "www.epiclead.com", "www.greatlead.com"];
+let myLeads = [];
 const inputEl = document.getElementById("input-el");
-const inputBtn = document.getElementById("input-btn");  
+const inputBtn = document.getElementById("input-btn");
+const ulEl = document.getElementById("ul-el");   
 
 inputBtn.addEventListener("click", function() {
-    alert("Hello AHH World!");
-    myLeads.push(inputEl.value);
-    console.log(myLeads);    
+    myLeads.push(inputEl.value)
+    renderLead()
+    inputEl.value = "www.";
 });
 
-for (let i = 0; i<myLeads.length; i++)
-{
-    console.log(myLeads[i])
+function renderLead() {
+    let listItems = "";
+    for (let i = 0; i < myLeads.length; i++) {
+        // listItems += "<li><a href='" + myLeads[i] + "' target='_blank'>" + myLeads[i] + "</a></li>";
+        
+        // Template String (instead of using many quotes and plus signs)
+        listItems += `
+        <li>
+            <a target='_blank' href='${myLeads[i]}'>
+                ${myLeads[i]}
+            </a>
+        </li>
+        `
+    }
+    ulEl.innerHTML = listItems;
 }
