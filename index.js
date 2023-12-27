@@ -2,6 +2,7 @@ let myLeads = [];
 const inputEl = document.getElementById("input-el");
 const inputBtn = document.getElementById("input-btn");
 const ulEl = document.getElementById("ul-el");    
+const saveBtn = document.getElementById("save-btn");   
 const deleteBtn = document.getElementById("delete-btn"); 
 const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads")); //convert string to array
 
@@ -9,6 +10,16 @@ if (leadsFromLocalStorage) { //if leadsFromLocalStorage is not null
     myLeads = leadsFromLocalStorage; //assign leadsFromLocalStorage to myLeads
     render(myLeads); //render myLeads
 }
+
+
+saveBtn.addEventListener("click", function() {
+    chrome.tabs.query({active : true, currentWindow: true}, function(tabs) { //query the current tab
+        myLeads.push(tabs[0].url);
+        localStorage.setItem("myLeads", JSON.stringify(myLeads)); //save MyLeads to local storage and use JSON.stringify to convert array to string
+        render(myLeads); //render myLeads
+    });
+
+});
 
 function render(leads) { //leads is function parameter
     let listItems = "";
